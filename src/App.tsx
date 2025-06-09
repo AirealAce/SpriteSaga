@@ -241,34 +241,36 @@ const UploadView = ({ setSprites, setCurrentView }: {
           Upload Your Sprite
         </h2>
 
-        <div
-          className={`border-2 border-dashed rounded-2xl p-8 text-center transition-all ${
-            dragActive ? 'border-green-400 bg-green-400/10' : 'border-gray-600 hover:border-green-400'
-          }`}
-          onDragEnter={() => setDragActive(true)}
-          onDragLeave={() => setDragActive(false)}
-          onDragOver={(e) => e.preventDefault()}
-          onDrop={handleDrop}
-        >
-          {selectedFile ? (
-            <div className="space-y-4">
-              <Image className="w-16 h-16 mx-auto text-green-400" />
-              <p className="text-green-400 font-semibold">{selectedFile.name}</p>
-              <p className="text-gray-400">File selected successfully!</p>
-            </div>
-          ) : (
-            <div className="space-y-4">
-              <Upload className="w-16 h-16 mx-auto text-gray-400" />
-              <p className="text-white font-semibold">Drop your sprite file here</p>
-              <p className="text-gray-400">or click to browse</p>
-            </div>
-          )}
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleFileSelect}
-            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-          />
+        <div className="relative">
+          <div
+            className={`border-2 border-dashed rounded-2xl p-8 text-center transition-all ${
+              dragActive ? 'border-green-400 bg-green-400/10' : 'border-gray-600 hover:border-green-400'
+            }`}
+            onDragEnter={() => setDragActive(true)}
+            onDragLeave={() => setDragActive(false)}
+            onDragOver={(e) => e.preventDefault()}
+            onDrop={handleDrop}
+          >
+            {selectedFile ? (
+              <div className="space-y-4">
+                <Image className="w-16 h-16 mx-auto text-green-400" />
+                <p className="text-green-400 font-semibold">{selectedFile.name}</p>
+                <p className="text-gray-400">File selected successfully!</p>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                <Upload className="w-16 h-16 mx-auto text-gray-400" />
+                <p className="text-white font-semibold">Drop your sprite file here</p>
+                <p className="text-gray-400">or click to browse</p>
+              </div>
+            )}
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleFileSelect}
+              className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+            />
+          </div>
         </div>
 
         <div className="space-y-6 mt-8">
